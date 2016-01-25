@@ -21,6 +21,7 @@
 #include"SS5Defs.h"
 #include"SS5Utils.h"
 #include"SS5Mod_socks5.h"
+#include"SS5Mod_socks5_redirect.h"
 #include"SS5Mod_authorization.h"
 #include"SS5OpenLdap.h"
 #include"SS5Mod_log.h"
@@ -31,81 +32,7 @@
 
 char *ss5ver=SS5_VERSION;
 
-UINT setInterface(struct _SS5ClientInfo *ci){
-	char interface[64] = { 0 };
-	char logString[128] = { 0 };
-	
-	pid_t pid;
-	if( NOTTHREADED() )
-		pid = getpid();
-	else
-		pid = (UINT)pthread_self();
-	
-	if( GetInterface(ci, interface) == OK ){
-		struct ifreq it;
-			
-		memset((void*)&it,0,sizeof(struct ifreq));
-		strncpy(it.ifr_name, interface, 10 );
-		if( setsockopt(ci->appSocket, SOL_SOCKET, SO_BINDTODEVICE, (char *)&it, sizeof(struct ifreq)) < 0 ){
-			// make this more serious so no connection can go through an unsecure network
-			snprintf(logString,128,"[%u] setsockopt returning ERR",pid);
-			SS5Modules.mod_logging.Logging(logString);
-			return ERR;
-		}
-	}else{
-		snprintf(logString,128,"[%u] getInterface returning ERR",pid);
-		SS5Modules.mod_logging.Logging(logString);
-		return ERR;
-	}
-	return OK;
-}
 
-UINT GetInterface( struct _SS5ClientInfo *ci, char * interface ){
-  FILE *pf;
-
-  char logString[128];
-	
-  char IPFile[128] = "/home/root/InterfacePairing.list";
-
-  char login[64] = { 0 };
-  char inter[64] = { 0 };
-
-	
-  pid_t pid;
-  if( NOTTHREADED() )
-    pid = getpid();
-  else
-    pid = (UINT)pthread_self();
-	
-  if( (pf = fopen(IPFile,"r")) == NULL ) {
-    ERRNO(0)
-    return ERR;
-  }
-	
-  //snprintf(logString,128,"[%u] have interface file",pid);
-  //SS5Modules.mod_logging.Logging(logString);
-
-  /* 
-   *    Look for username and password into password file 
-   */
-  while( fscanf(pf,"%s %s",login,inter) != EOF ) {
-		if( STRCASEEQ(ci->Username,login,strlen(login)-1) ){
-			// Authorized Addr found
-			strcpy(interface,inter);
-			//snprintf(logString,128,"[%u] assigned %s to user %s",pid,inter,ci->Username);
-			//SS5Modules.mod_logging.Logging(logString);
-			return OK;
-		}		
-  }
-
-  if( fclose(pf) ) {
-    ERRNO(0)
-    return ERR;
-  }
-
-  return ERR;
-	
-}
 
 UINT InitModule( struct _module *m )
 {
@@ -1308,11 +1235,14 @@ UINT ConnectServing(struct _SS5ClientInfo *ci, struct _SS5RequestInfo *ri, struc
         }
       }
 			
+	#ifdef SS5_USE_REDIRECT		
+			
 	  if( setInterface(ci) == ERR ){
 		return ERR;
 	  }
 
-    
+    #endif
+	
       if( err == S5REQUEST_SUCCEDED ) {
         bzero((char *)&applicationSsin, sizeof(struct sockaddr_in));
         applicationSsin.sin_family      = AF_INET;

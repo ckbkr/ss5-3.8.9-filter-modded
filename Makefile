@@ -12,7 +12,7 @@ trc_path_base   = /var/log/ss5
 
 CC = gcc
 
-CFLAGS=-g -O2 -DLINUX -D_FILE_OFFSET_BITS=64 -I .  
+CFLAGS=-g -O2 -DLINUX -D_FILE_OFFSET_BITS=64 -I .  -DSS5_USE_REDIRECT  -DSS5_USE_REDIRECT_DENY_UNKNOWN  
 
 LIBS = -lpthread 
 

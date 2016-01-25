@@ -226,8 +226,5 @@ UINT
 			struct _S5ProxyNode *node
 );
 
-UINT GetInterface( struct _SS5ClientInfo *ci, char * interface );
-
-UINT setInterface(struct _SS5ClientInfo *ci);
 
 #endif

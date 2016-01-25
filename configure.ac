@@ -88,12 +88,26 @@ AC_ARG_WITH(gssapi,         [  --with-gssapi]             Turn on gssapi support
     EXTRA_CFLAGS="$EXTRA_CFLAGS -DSS5_USE_GSSAPI ";
   fi;
 
-AC_ARG_WITH(mysql,         [  --with-mysql]             Turn on mysql support,              [mysql="$withval"], [mysql="no"])
+AC_ARG_WITH(mysql,         [  --with-mysql]	Turn on mysql support,              [mysql="$withval"], [mysql="no"])
   if test "$mysql" != "no"; then 
     EXTRA_LIBS="$EXTRA_LIBS `mysql_config --libs`";
 
     EXTRA_CFLAGS="$EXTRA_CFLAGS -DSS5_USE_MYSQL ";
   fi;
+  
+AC_ARG_WITH(socks5_redirect,         [  --with-socks5_redirect]	Turn on socks5 redirection,              [mysql="$withval"], [socks5_redirect="no"])
+  if test "$socks5_redirect" != "no"; then 
+    
+    EXTRA_CFLAGS="$EXTRA_CFLAGS -DSS5_USE_REDIRECT ";
+  fi;
+
+AC_ARG_WITH(socks5_redirect_deny_unknown,         [  --with-socks5_redirect_deny_unknown]	Deny all clients not listed in the redirection list,              [mysql="$withval"], [socks5_redirect_deny_unknown="no"])
+  if test "$socks5_redirect_deny_unknown" != "no"; then 
+    
+    EXTRA_CFLAGS="$EXTRA_CFLAGS -DSS5_USE_REDIRECT_DENY_UNKNOWN ";
+  fi;
+  
+  
 
 AC_ARG_WITH(configfile,     [  --with-configfile=val]     Set the location of config file,     [SS5_CONFIG_FILE="$withval"]; AC_DEFINE_UNQUOTED(SS5_CONFIG_FILE, "$withval"))
 

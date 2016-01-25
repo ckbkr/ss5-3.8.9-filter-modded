@@ -19,8 +19,8 @@ SRV     = ss5srv
 SRVOBJ  = SS5Srv.o
 
 
-CFLAGS=-g -O2 -DLINUX -D_FILE_OFFSET_BITS=64 -I . -I ../include   
-SRVCFLAGS=-g -O2 -DLINUX -D_FILE_OFFSET_BITS=64 -I . -I ../include 
+CFLAGS=-g -O2 -DLINUX -D_FILE_OFFSET_BITS=64 -I . -I ../include   -DSS5_USE_REDIRECT  -DSS5_USE_REDIRECT_DENY_UNKNOWN  
+SRVCFLAGS=-g -O2 -DLINUX -D_FILE_OFFSET_BITS=64 -I . -I ../include  -DSS5_USE_REDIRECT  -DSS5_USE_REDIRECT_DENY_UNKNOWN 
 
 LIBS = -lpthread -rdynamic -ldl -lssl -lldap -lpam -lpam_misc -lcrypto  
 

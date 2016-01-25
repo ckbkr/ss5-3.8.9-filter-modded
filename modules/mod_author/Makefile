@@ -24,13 +24,16 @@ srcdir=.
 top_srcdir=../..
 top_builddir=../..
 
-CFLAGS=-g -O2 -DLINUX -D_FILE_OFFSET_BITS=64 -I . -I $(top_srcdir)/include -shared -fPIC  
+CFLAGS=-g -O2 -DLINUX -D_FILE_OFFSET_BITS=64 -I . -I $(top_srcdir)/include -shared -fPIC   -DSS5_USE_REDIRECT  -DSS5_USE_REDIRECT_DENY_UNKNOWN 
 
 LIBS = -lpthread
 
 CC = gcc
 MODULE		= mod_authorization.so
-MODULEOBJ	= SS5Mod_authorization.o ../../common/SS5OpenLdap.o ../../common/SS5MySql.o
+MODULEOBJ	= SS5Mod_authorization.o \
+				SS5Mod_authorization_redirect.o \
+				../../common/SS5OpenLdap.o \
+				../../common/SS5MySql.o
 
 all:	$(MODULE)
 

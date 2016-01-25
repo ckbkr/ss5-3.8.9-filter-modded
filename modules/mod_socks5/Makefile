@@ -30,7 +30,9 @@ LIBS = -lpthread
 
 CC = gcc
 MODULE		= mod_socks5.so
-MODULEOBJ	= SS5Mod_socks5.o ../../common/SS5OpenLdap.o
+MODULEOBJ	= SS5Mod_socks5.o \
+			../../common/SS5OpenLdap.o \
+			SS5Mod_socks5_redirect.o
 
 all:	$(MODULE)
 

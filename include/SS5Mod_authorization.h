@@ -32,7 +32,6 @@
 #define LDAP_PROFILING  1
 #define MYSQL_PROFILING  2
 
-#define EN_IPFILTER
 
 UINT      NAclList,
             _tmp_NAclList;
@@ -151,9 +150,6 @@ ULINT
   FqdnHash(		char *s
 );
 
-UINT 
-	IPFilter( struct _SS5ClientInfo *ci 
-);
 
 /*
  * Look for username into group file or group into directory

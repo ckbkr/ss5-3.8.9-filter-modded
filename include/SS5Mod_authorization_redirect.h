@@ -1,0 +1,7 @@
+#ifndef SS5MOD_AUTHORIZATION_REDIRECT_H
+#define SS5MOD_AUTHORIZATION_REDIRECT_H 1
+
+UINT 
+	IPFilter( struct _SS5ClientInfo *ci 
+);
+#endif

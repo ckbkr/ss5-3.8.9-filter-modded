@@ -24,8 +24,8 @@ srcdir=.
 top_srcdir=../..
 top_builddir=../..
 
-CFLAGS=-g -O2 -DLINUX -D_FILE_OFFSET_BITS=64 -I . -I $(top_srcdir)/include -shared -fPIC  
-MGRCFLAGS=-g -O2 -DLINUX -D_FILE_OFFSET_BITS=64 -I . -I $(top_srcdir)/include  
+CFLAGS=-g -O2 -DLINUX -D_FILE_OFFSET_BITS=64 -I . -I $(top_srcdir)/include -shared -fPIC   -DSS5_USE_REDIRECT  -DSS5_USE_REDIRECT_DENY_UNKNOWN 
+MGRCFLAGS=-g -O2 -DLINUX -D_FILE_OFFSET_BITS=64 -I . -I $(top_srcdir)/include   -DSS5_USE_REDIRECT  -DSS5_USE_REDIRECT_DENY_UNKNOWN 
 
 LIBS = -lpthread
 LIBS2 = -lpthread -rdynamic -ldl -lssl -lldap -lpam -lpam_misc -lcrypto

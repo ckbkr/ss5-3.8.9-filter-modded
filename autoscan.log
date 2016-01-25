@@ -1,0 +1,61 @@
+autoscan: warning: missing AC_CHECK_FUNCS([gethostname]) wanted by: 
+	src/SS5GSSApi.c:62
+autoscan: warning: missing AC_CHECK_FUNCS([strerror]) wanted by: 
+	include/SS5Main.h:211
+autoscan: warning: missing AC_CHECK_HEADERS([sys/param.h]) wanted by: 
+	include/SS5Main.h:85
+autoscan: warning: missing AC_FUNC_MALLOC wanted by: 
+	common/SS5Radius.c:218
+	src/SS5Core.c:157
+	src/SS5Core.c:159
+	src/SS5Core.c:164
+	src/SS5Core.c:166
+	src/SS5Core_GSS.c:157
+	src/SS5Core_GSS.c:159
+	src/SS5Core_GSS.c:164
+	src/SS5Core_GSS.c:166
+	src/SS5GSSApi.c:150
+	src/SS5GSSApi.c:407
+	src/SS5GSSApi.c:540
+	modules/mod_authen/SS5Supa.c:233
+	modules/mod_authen/SS5Supa.c:253
+	modules/mod_authen/SS5Supa.c:296
+	modules/mod_authen/SS5Supa.c:304
+autoscan: warning: missing AC_PROG_AWK wanted by: 
+	tool/montlc.sh:54
+	tool/montlc.sh:56
+	tool/montlc.sh:58
+	tool/montlc.sh:84
+	tool/montlc.sh:86
+	tool/montlc.sh:88
+autoscan: warning: missing AC_TYPE_UINT32_T wanted by: 
+	include/SS5Supa.h:46
+	include/SS5Supa.h:48
+	include/SS5Supa.h:50
+	include/SS5Supa.h:58
+	modules/mod_authen/SS5Supa.c:38
+	modules/mod_authen/SS5Supa.c:124
+	modules/mod_authen/SS5Supa.c:124
+	modules/mod_authen/SS5Supa.c:173
+	modules/mod_authen/SS5Supa.c:193
+	modules/mod_authen/SS5Supa.c:194
+autoscan: warning: missing AC_TYPE_UINT8_T wanted by: 
+	common/SS5Radius.c:45
+	common/SS5Radius.c:361
+	include/SS5Supa.h:37
+	include/SS5Supa.h:38
+	include/SS5Supa.h:45
+	include/SS5Supa.h:47
+	include/SS5Supa.h:49
+	include/SS5Supa.h:51
+	include/SS5Supa.h:57
+	include/SS5Supa.h:59
+	include/SS5Supa.h:64
+	include/SS5Supa.h:65
+	include/SS5Supa.h:66
+	include/SS5Supa.h:67
+	include/SS5Supa.h:68
+	modules/mod_authen/SS5Supa.c:125
+	modules/mod_authen/SS5Supa.c:194
+	modules/mod_authen/SS5Supa.c:278
+	modules/mod_authen/SS5Supa.c:280

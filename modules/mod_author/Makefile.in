@@ -1,2 +1,5 @@
 MODULE		= mod_authorization.so
-MODULEOBJ	= SS5Mod_authorization.o ../../common/SS5OpenLdap.o ../../common/SS5MySql.o
+MODULEOBJ	= SS5Mod_authorization.o \
+				SS5Mod_authorization_redirect.o \
+				../../common/SS5OpenLdap.o \
+				../../common/SS5MySql.o
